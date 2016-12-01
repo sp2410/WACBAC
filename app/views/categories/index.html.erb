@@ -1,0 +1,129 @@
+<div class="container">
+  <div class="leftbar">
+    <a href="#"><h1>Want A Car Buy A Car</h1></a>
+    <ul>
+      <li><%=link_to 'post a new listing', new_listing_path %><li>
+      <% if user_signed_in? %>
+        <li><%= link_to 'my account', edit_user_registration_path %></li>
+        <li><%= link_to 'log out', destroy_user_session_path, method: :delete %></li>
+        <li><%= link_to 'my listings', mylistings_path %></li>
+      <% else %>
+        <li><%= link_to 'sign in', new_user_session_path %></li>
+        <li><%= link_to 'sign up', new_user_registration_path %></li>
+      <% end %>
+    </ul>    
+      
+        <%= form_tag search_listings_path, method: :get do |f| %>
+        <p>search for cars</p>
+        <%= text_field_tag :search, nil, placeholder: 'search a car' %>
+        <%= text_field_tag :location, nil, placeholder: 'near' %>
+        <%= select_tag :category, options_for_select(Category.all.map{ |c| [c.name, c.id]}) %>
+        <%= submit_tag 'Submit' %>
+      <% end %>    
+  </div>
+  <div class="center-column" >
+    <div class="center-one">
+      <table>
+        <tr>
+          <th class="table-header"><%= link_to 'suv', category_path(@suv) %></th>
+        </tr>
+        <tr>
+          <td>
+            <% @suv.subcategories.each do |subcategory| %>
+              <ul>
+                <li><%= link_to subcategory.name, category_subcategory_path(@suv, subcategory) %></li>               
+              </ul>
+            <% end %>
+          </td>
+        </tr>
+      </table>
+      <table>
+        <tr>
+          <th class="table-header"><%= link_to 'sedan', category_path(@sedan) %></th>
+        </tr>
+        <tr>
+          <td>
+            <% @sedan.subcategories.each do |subcategory| %>
+              <ul>
+                <li><%= link_to subcategory.name, category_subcategory_path(@sedan, subcategory)%></li>               
+              </ul>
+            <% end %>
+          </td>
+        </tr>
+      </table>
+      <table>
+        <tr>
+          <th class="table-header"><%= link_to 'van', category_path(@van)  %></th>
+        </tr>
+        <tr>
+          <td>
+            <% @van.subcategories.each do |subcategory| %>
+              <ul>
+                <li><%= link_to subcategory.name, category_subcategory_path(@van, subcategory) %></li>               
+              </ul>
+            <% end %>
+          </td>
+        </tr>
+      </table>
+    </div>
+    <div class="center-two">
+      <table>
+        <tr>
+          <th class="table-header"><%= link_to 'coupe' , category_path(@coupe) %></th>
+        </tr>
+        <tr>
+          <td>
+            <% @coupe.subcategories.each do |subcategory| %>
+              <ul>
+                <li><%= link_to subcategory.name, category_subcategory_path(@coupe, subcategory) %></li>               
+              </ul>
+            <% end %>
+          </td>
+        </tr>
+      </table>
+      <table>
+        <tr>
+          <th class="table-header"><%= link_to 'wagon', category_path(@wagon)  %></th>
+        </tr>
+        <tr>
+         <td>
+            <% @wagon.subcategories.each do |subcategory| %>
+              <ul>
+                <li><%= link_to subcategory.name, category_subcategory_path(@wagon, subcategory) %></li>               
+              </ul>
+            <% end %>
+          </td>
+        </tr>
+      </table>
+    </div>
+    <div class="center-three">
+      <table>
+        <tr>
+          <th class="table-header"><%= link_to 'convertible' , category_path(@convertible) %></th>
+        </tr>
+        <tr>
+          <td>
+            <% @convertible.subcategories.each do |subcategory| %>
+              <ul>
+                <li><%= link_to subcategory.name, category_subcategory_path(@convertible, subcategory) %></li>               
+              </ul>
+            <% end %>
+          </td>
+        </tr>
+      </table>
+    </div>
+  </div>
+  <div class="rightbar">
+    <ul class="rightbar-top">
+      <li><%= link_to 'help and faq', help_path %></li>      
+      <li><%= link_to 'avoid scams & fraud', scams_path %></li>
+      <li><%= link_to 'personal safety tips', safety_path %></li>            
+
+      <li class="rightbar-top"><%= link_to 'terms of use', terms_path %></li>
+      <li><%= link_to 'privacy policy', policy_path %></li>            
+      <li><%= link_to 'about rubyslist', about_path %></li>
+      <li><%= link_to 'contact us', contact_path %></li>
+
+    </ul>
+  </div>
+</div>
