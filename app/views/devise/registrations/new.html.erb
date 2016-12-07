@@ -1,7 +1,7 @@
 <div class="topbar">
   <div class="container">
     <div class="vertical-center">
-      rubyslist > jobs > accounting
+      wacbac > signup
     </div>
   </div>
 </div>
@@ -23,10 +23,11 @@
     <%= f.password_field :password, autocomplete: "off" %>
 
     <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "off" %>
-  
+    <%= f.password_field :password_confirmation, autocomplete: "off" %><br />
+    
 
   <div class="signin-button">
+   <%= f.select :role, Type: User.roles.keys.to_a %>
     <%= f.submit "Sign up", class: "submit-width" %>
   </div>
 <% end %>
