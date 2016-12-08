@@ -1,11 +1,12 @@
 <div class="topbar">
   <div class="container">
     <div class="vertical-center">
-      <%=  link_to 'want a car buy a car', root_path %> > jobs > accounting
+      <%=  link_to 'want a car buy a car', root_path %> > categories > subcategories
     </div>
   </div>
 </div>
 <div class="container">
+<% if current_user.role.eql? "premium" %>
   <div>
     <button type="button">reply</button>
     <%=  time_ago_in_words(@listing.created_at) %>
@@ -17,7 +18,9 @@
       <p><%= link_to 'delete', @listing, data: {confirm: "Wait! Are you sure ?"}, method: :delete %></p>
     <% end %>
     </div>
-    <p><%=  @listing.description %>
+
+    <p> 
+    <%=  @listing.description %>
       <%= image_tag @listing.image.to_s if @listing.image_url.present? %>
       <%=  @listing.year %>
       <%=  @listing.miles %>
@@ -25,14 +28,18 @@
       <%=  @listing.color %>
       <%=  @listing.cylinder %>
       <%=  @listing.fuel %>
-      <%=  @listing.drive %>
+      <%=  @listing.drive %>          
     </p>       
   </div>
 
   <footer>
     <p><%=  @listing.id %></p>    
     <p>posted <%=  time_ago_in_words(@listing.created_at) %></p>    
-    <p>updated <%=  time_ago_in_words(@listing.updated_at) %></p>   
+    <p>updated <%=  time_ago_in_words(@listing.updated_at) %></p>      
   </footer>
+
+ 
+
+  <% end %>  
 </div>
 

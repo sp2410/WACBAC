@@ -26,8 +26,8 @@
     <%= f.password_field :password_confirmation, autocomplete: "off" %><br />
     
 
-  <div class="signin-button">
-   <%= f.select :role, Type: User.roles.keys.to_a %>
+  <div class="signin-button">    
+   <%= f.select :role, User.roles.keys, {}, class: 'user-roles-select' %>
     <%= f.submit "Sign up", class: "submit-width" %>
   </div>
 <% end %>

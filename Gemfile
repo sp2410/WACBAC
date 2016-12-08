@@ -27,6 +27,7 @@ gem 'jbuilder', '~> 2.0'
 gem 'geocoder'
 
 gem 'devise'
+gem 'pundit'
 
 gem 'sdoc', '~> 0.4.0', group: :doc
 

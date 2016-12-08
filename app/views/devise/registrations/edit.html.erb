@@ -44,6 +44,7 @@
   </div>
 
   <div class="signin-button">
+  <%= f.select :role, User.roles.keys, {}, class: 'user-roles-select' %>
     <%= f.submit "Update", class: "submit-width" %>
   </div>
 <% end %>

@@ -23,6 +23,8 @@
   </div>
   <div class="center-column" >
     <div class="center-one">
+    <% if user_signed_in? %>
+    <% if current_user.role.eql? "premium" %>
       <table>
         <tr>
           <th class="table-header"><%= link_to 'suv', category_path(@suv) %></th>
@@ -36,7 +38,9 @@
             <% end %>
           </td>
         </tr>
-      </table>
+      </table>        
+      <% end %> 
+    <% end %> 
       <table>
         <tr>
           <th class="table-header"><%= link_to 'sedan', category_path(@sedan) %></th>
