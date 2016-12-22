@@ -6,7 +6,6 @@
   </div>
 </div>
 <div class="container">
-<% if current_user.role.eql? "premium" %>
   <div>
     <button type="button">reply</button>
     <%=  time_ago_in_words(@listing.created_at) %>
@@ -37,9 +36,6 @@
     <p>posted <%=  time_ago_in_words(@listing.created_at) %></p>    
     <p>updated <%=  time_ago_in_words(@listing.updated_at) %></p>      
   </footer>
-
- 
-
-  <% end %>  
+  
 </div>
 

@@ -1,26 +1,50 @@
 <div class="container">
-  <div class="leftbar">
-    <a href="#"><h1>Want A Car Buy A Car</h1></a>
-    <ul>
-      <li><%=link_to 'post a new listing', new_listing_path %><li>
-      <% if user_signed_in? %>
-        <li><%= link_to 'my account', edit_user_registration_path %></li>
-        <li><%= link_to 'log out', destroy_user_session_path, method: :delete %></li>
-        <li><%= link_to 'my listings', mylistings_path %></li>
-      <% else %>
-        <li><%= link_to 'sign in', new_user_session_path %></li>
-        <li><%= link_to 'sign up', new_user_registration_path %></li>
-      <% end %>
-    </ul>    
-      
+  <div class="navbar">
+      <div class ="aboutleft">
+        <ul>
+            <li><%=link_to 'POST A NEW LISTING', new_listing_path %></li>
+        </ul>
+      </div>
+      <div class ="center"> 
+        <ul>
+          <li><%= link_to 'ABOUT US', about_path %></li>             
+        </ul>
+      </div>
+      <div class ="aboutright">
+        <ul>            
+            <% if user_signed_in? %>
+              <li><%= link_to 'MY ACCOUNT', edit_user_registration_path %></li>
+              <li><%= link_to 'LOG OUT', destroy_user_session_path, method: :delete %></li>
+              <li><%= link_to 'MY LISTINGS', mylistings_path %></li>
+            <% else %>
+              <li><%= link_to 'SIGN IN', new_user_session_path %></li>
+              <li><%= link_to 'SIGN UP', new_user_registration_path %></li>
+            <% end %>
+          </ul>                
+      </div>
+    </div>
+
+<div class="footer">
+ <div class ="center">
+    <a href="#"><%= image_tag("wacbac2.png", :alt => "rss feed", :size => "300x100") %></a>
+  </div>
+
+  <div class="searchbox">   
+    <section>
         <%= form_tag search_listings_path, method: :get do |f| %>
         <p>search for cars</p>
         <%= text_field_tag :search, nil, placeholder: 'search a car' %>
         <%= text_field_tag :location, nil, placeholder: 'near' %>
         <%= select_tag :category, options_for_select(Category.all.map{ |c| [c.name, c.id]}) %>
-        <%= submit_tag 'Submit' %>
+        <%= submit_tag 'Search' %>
       <% end %>    
+    </section>
   </div>
+
+</div>
+
+    
+
   <div class="center-column" >
     <div class="center-one">
     <% if user_signed_in? %>
@@ -124,8 +148,7 @@
       <li><%= link_to 'personal safety tips', safety_path %></li>            
 
       <li class="rightbar-top"><%= link_to 'terms of use', terms_path %></li>
-      <li><%= link_to 'privacy policy', policy_path %></li>            
-      <li><%= link_to 'about rubyslist', about_path %></li>
+      <li><%= link_to 'privacy policy', policy_path %></li>                  
       <li><%= link_to 'contact us', contact_path %></li>
 
     </ul>
